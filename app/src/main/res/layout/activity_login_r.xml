@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView_logoImg"
+        android:layout_width="280dp"
+        android:layout_height="135dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@mipmap/pic" />
+
+    <EditText
+        android:id="@+id/editText_id"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView_logoImg"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:textColor="@color/deepGray"
+        android:background="@drawable/et_shape"
+        android:paddingLeft="20dp"
+        android:inputType="textEmailAddress"
+        android:text="이메일" />
+
+    <EditText
+        android:id="@+id/editText_passwd"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/editText_id"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_shape"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:text="비밀번호"
+        android:textColor="@color/deepGray" />
+
+    <Button
+        android:id="@+id/button_loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_passwd"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_shape"
+        android:text="로그인"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/button_loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="아직 회원이 아니신가요?" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="회원가입 하기" />
+    </LinearLayout>
+
+</RelativeLayout>
