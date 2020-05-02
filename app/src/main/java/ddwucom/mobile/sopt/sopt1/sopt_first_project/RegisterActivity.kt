@@ -13,7 +13,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        button_login2.setOnClickListener {
+        /*button_login2.setOnClickListener {
             if (editText3.text.isNullOrBlank()) {
                 Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
             } else if (editText4.text.isNullOrBlank()) {
@@ -28,6 +28,22 @@ class RegisterActivity : AppCompatActivity() {
                 resultIntent.putExtra("pw", editText4.text.toString())
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
+            }
+        }*/
+
+        button_login2.setOnClickListener {
+            when {
+                editText3.text.isNullOrBlank() -> Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
+                editText4.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                editText5.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호 확인을 입력하세요.", Toast.LENGTH_SHORT).show()
+                editText6.text.isNullOrBlank() -> Toast.makeText(this, "Github 닉네임을 입력하세요.", Toast.LENGTH_SHORT).show()
+                else -> {
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("id", editText3.text.toString())
+                    resultIntent.putExtra("pw", editText4.text.toString())
+                    setResult(Activity.RESULT_OK, resultIntent)
+                    finish()
+                }
             }
         }
     }
