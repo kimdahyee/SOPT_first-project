@@ -20,7 +20,7 @@
         android:id="@+id/button_go"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:textColor="@color/deepGray"
         android:background="@drawable/et_shape"
         android:text="로그인하러 가기"

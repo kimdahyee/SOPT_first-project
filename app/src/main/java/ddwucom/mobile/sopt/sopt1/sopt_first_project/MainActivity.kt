@@ -1,6 +1,8 @@
 package ddwucom.mobile.sopt.sopt1.sopt_first_project
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,5 +22,7 @@ class MainActivity : AppCompatActivity() {
             val intent2 = Intent(this, LayoutActivity::class.java)
             startActivity(intent2)
         }
+
+
     }
 }
