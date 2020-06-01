@@ -138,7 +138,7 @@ SOPT 1차 세미나 과제
 	                else -> {  
 	                    //Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();  
 	  
-					    val intent = Intent(this, LoginActivity::class.java)  
+			    val intent = Intent(this, LoginActivity::class.java)  
 	  
 	                    //intent.putExtra("id", editText3.text.toString())  
 					    //intent.putExtra("pw", editText4.text.toString())  
