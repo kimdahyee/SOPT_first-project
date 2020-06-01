@@ -97,3 +97,126 @@ SOPT 1차 세미나 과제
 	* 변수!!의 의미:  null이여도 null이 아니라고 강제 형변환, null 일 수 있음을 암시
 	
 	* 인자값없이 when 조건문을 쓸 경우 if 조건문처럼 사용 가능
+	
+## [ 성장 과제 2 ] 자동 로그인 구현하기
+> 회원가입시 LoginActivity로 돌아와 가입한 id, pw로 자동 로그인 하기, 로그인 하여 MainActivity로 간 경우 앱을 종료했다가 다시 켜면 LoginActivity에서 자동 로그인 하기
+
+**SharedPreferences란?** 어플 내에서 간단한 데이터를 저장하고 읽어올 수 있는 API, 파일 형태로 저장
+
+[RegisterActivity.kt]
+
+    
+	package ddwucom.mobile.sopt.sopt1.sopt_first_project  
+	  
+	import android.content.Context  
+	import android.content.Intent  
+	import android.content.SharedPreferences  
+	import android.os.Bundle  
+	import android.widget.Toast  
+	import androidx.appcompat.app.AppCompatActivity  
+	import kotlinx.android.synthetic.main.activity_register.*  
+	  
+	class RegisterActivity : AppCompatActivity() {  
+	  
+	    //val REQ_CODE = 100
+	    override fun onCreate(savedInstanceState: Bundle?) {  
+	        super.onCreate(savedInstanceState)  
+	        setContentView(R.layout.activity_register)  
+	  
+	        var pref : SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)  
+	        //"pref"이라는 파일 이름으로 SharedPreferences 객체 생성  
+		    //해당 앱만 읽기, 쓰기가 가능하도록 권한 설정  
+		    var editor : SharedPreferences.Editor = pref.edit()  
+	        //데이터를 저장하기 위한 Editor 객체 생성  
+	  
+		    button_login2.setOnClickListener {
+			    when {  
+	                editText3.text.isNullOrBlank() -> Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()  
+	                editText4.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()  
+	                editText5.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호 확인을 입력하세요.", Toast.LENGTH_SHORT).show()  
+	                editText6.text.isNullOrBlank() -> Toast.makeText(this, "Github 닉네임을 입력하세요.", Toast.LENGTH_SHORT).show()  
+	                else -> {  
+	                    //Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();  
+	  
+					    val intent = Intent(this, LoginActivity::class.java)  
+	  
+	                    //intent.putExtra("id", editText3.text.toString())  
+					    //intent.putExtra("pw", editText4.text.toString())  
+					    editor.putString("id", editText3.text.toString())   
+	                    editor.putString("pw", editText4.text.toString())  
+	                    //editor를 사용해서 파일에 key-value 형태로 id, pw 정보 저장  
+						//저장할 수 있는 데이터 타입 boolean, int, float, long, string  	
+						editor.commit()  
+	                    //데이터 저장 및 삭제 시 commit 필수  
+	  
+					    startActivity(intent)  
+	                    finish()  
+	                }  
+	            }  
+	        }  
+		}  
+	}
+	
+[LoginActivity.kt]
+
+    package ddwucom.mobile.sopt.sopt1.sopt_first_project  
+  
+	import android.app.Activity  
+	import android.content.Context  
+	import android.content.Intent  
+	import android.content.SharedPreferences  
+	import android.os.Bundle  
+	import android.widget.Toast  
+	import androidx.appcompat.app.AppCompatActivity  
+	import kotlinx.android.synthetic.main.activity_login_c.*  
+	  
+	class LoginActivity : AppCompatActivity() {  
+	  
+	    val REQ_CODE = 100;  
+	  
+	    override fun onCreate(savedInstanceState: Bundle?) {  
+	        super.onCreate(savedInstanceState)  
+	        setContentView(R.layout.activity_login_c)  
+	  
+	        autoLogin()  
+	  
+	        button_login.setOnClickListener {  
+			    if (editText1.text.isNullOrBlank() || editText2.text.isNullOrBlank()) {  
+	                Toast.makeText(this, "아이디와 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show()  
+	            } else {  
+	                val intent = Intent(this, MainActivity::class.java)  
+	                startActivity(intent)  
+	                finish()  
+	            }  
+	        }  
+	  
+		    textView2.setOnClickListener { //회원가입하기 버튼 클릭  
+			    val intent = Intent(this, RegisterActivity::class.java)  
+		        startActivityForResult(intent, REQ_CODE)  
+		    }  
+		}  
+	  
+	    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {  
+	        super.onActivityResult(requestCode, resultCode, data)  
+	  
+	        if (requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {  
+	            //editText1.setText(data!!.getStringExtra("id"))  
+			    //editText2.setText(data!!.getStringExtra("pw"))  finish()  
+	        }  
+	    }  
+	  
+	    fun autoLogin() {  
+	        var pref: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)  
+	  
+	        if (!(pref.getString("id", null).isNullOrBlank() || pref.getString("pw", null).isNullOrBlank())) {  
+	            val id = pref.getString("id", null).toString()  
+	  
+	            if (!id.isNullOrBlank()) {  
+	                Toast.makeText(this, "${id}님이 자동로그인 되었습니다.", Toast.LENGTH_SHORT).show();  
+	                val intent = Intent(this, MainActivity::class.java)  
+	                startActivityForResult(intent, REQ_CODE)  
+	            }  
+	        }  
+	    }  
+	}
+
