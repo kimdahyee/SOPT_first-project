@@ -159,7 +159,7 @@ SOPT 1차 세미나 과제
 	
 [LoginActivity.kt]
 
-    	package ddwucom.mobile.sopt.sopt1.sopt_first_project  
+    package ddwucom.mobile.sopt.sopt1.sopt_first_project  
   
 	import android.app.Activity  
 	import android.content.Context  
