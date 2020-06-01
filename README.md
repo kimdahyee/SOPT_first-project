@@ -98,6 +98,256 @@ SOPT 1차 세미나 과제
 	
 	* 인자값없이 when 조건문을 쓸 경우 if 조건문처럼 사용 가능
 	
+	
+## [ 성장 과제 1 ] 로그인 화면 만들기
+> ConstraintLayout, LineatLayout, RelativeLayout 3가지로 모두 만들어 보기
+
+[ConstraintLayout]
+
+    <?xml version="1.0" encoding="utf-8"?>  
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+	  xmlns:app="http://schemas.android.com/apk/res-auto"  
+	  android:layout_width="match_parent"  
+	  android:layout_height="match_parent">  
+	  
+	    <ImageView  
+		  android:id="@+id/imageView2"  
+		  android:layout_width="280dp"  
+		  android:layout_height="135dp"  
+		  android:layout_marginTop="70dp"  
+		  app:layout_constraintEnd_toEndOf="parent"  
+		  app:layout_constraintStart_toStartOf="parent"  
+		  app:layout_constraintTop_toTopOf="parent"  
+		  app:srcCompat="@mipmap/pic" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText1"  
+		  android:layout_width="0dp"  
+		  android:layout_height="40dp"  
+		  android:layout_marginStart="24dp"  
+		  android:layout_marginLeft="24dp"  
+		  android:layout_marginTop="42dp"  
+		  android:layout_marginEnd="24dp"  
+		  android:layout_marginRight="24dp"  
+		  android:textColor="@color/deepGray"  
+		  android:background="@drawable/et_shape"  
+		  android:ems="10"  
+		  android:inputType="textEmailAddress"  
+		  android:paddingLeft="20dp"  
+		  android:text="이메일"  
+		  app:layout_constraintEnd_toEndOf="parent"  
+		  app:layout_constraintStart_toStartOf="parent"  
+		  app:layout_constraintTop_toBottomOf="@+id/imageView2" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText2"  
+		  android:layout_width="0dp"  
+		  android:layout_height="40dp"  
+		  android:layout_marginTop="20dp"  
+		  android:textColor="@color/deepGray"  
+		  android:background="@drawable/et_shape"  
+		  android:ems="10"  
+		  android:inputType="textPassword"  
+		  android:paddingLeft="20dp"  
+		  android:text="비밀번호"  
+		  app:layout_constraintEnd_toEndOf="@+id/editText1"  
+		  app:layout_constraintStart_toStartOf="@+id/editText1"  
+		  app:layout_constraintTop_toBottomOf="@+id/editText1" />  
+		  
+	    <Button  
+		  android:id="@+id/button_login"  
+		  android:layout_width="0dp"  
+		  android:layout_height="wrap_content"  
+		  android:layout_marginTop="30dp"  
+		  android:textColor="@color/white"  
+		  android:background="@drawable/btn_shape"  
+		  android:text="로그인"  
+		  app:layout_constraintEnd_toEndOf="@+id/editText2"  
+		  app:layout_constraintStart_toStartOf="@+id/editText2"  
+		  app:layout_constraintTop_toBottomOf="@+id/editText2" />  
+	  
+	    <TextView  
+		  android:id="@+id/textView1"  
+		  android:layout_width="wrap_content"  
+		  android:layout_height="wrap_content"  
+		  android:layout_marginTop="16dp"  
+		  android:text="아직 회원이 아니신가요?"  
+		  app:layout_constraintEnd_toStartOf="@+id/textView2"  
+		  app:layout_constraintHorizontal_bias="0.5"  
+		  app:layout_constraintStart_toStartOf="parent"  
+		  app:layout_constraintTop_toBottomOf="@+id/button_login" />  
+	  
+	    <TextView  
+		  android:id="@+id/textView2"  
+		  android:layout_width="wrap_content"  
+		  android:layout_height="wrap_content"  
+		  android:layout_marginStart="15dp"  
+		  android:layout_marginLeft="15dp"  
+		  android:text="회원가입하기"  
+		  app:layout_constraintBottom_toBottomOf="@+id/textView1"  
+		  app:layout_constraintEnd_toEndOf="parent"  
+		  app:layout_constraintHorizontal_bias="0.5"  
+		  app:layout_constraintStart_toEndOf="@+id/textView1"  
+		  app:layout_constraintTop_toTopOf="@+id/textView1" />  
+	  
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+[LinearLayout]
+
+    <?xml version="1.0" encoding="utf-8"?>  
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+	  xmlns:app="http://schemas.android.com/apk/res-auto"  
+	  android:orientation="vertical" android:layout_width="match_parent"  
+	  android:layout_height="match_parent"  
+	  android:padding="24dp" >  
+	  
+	    <ImageView  
+		  android:id="@+id/imageView2"  
+		  android:layout_width="280dp"  
+		  android:layout_height="135dp"  
+		  android:layout_gravity="center"  
+		  android:layout_marginTop="70dp"  
+		  app:srcCompat="@mipmap/pic" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText7"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="40dp"  
+		  android:layout_gravity="center"  
+		  android:layout_marginTop="40dp"  
+		  android:textColor="@color/deepGray"  
+		  android:background="@drawable/et_shape"  
+		  android:paddingLeft="20dp"  
+		  android:inputType="textEmailAddress"  
+		  android:text="이메일" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText8"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="40dp"  
+		  android:layout_gravity="center"  
+		  android:layout_marginTop="20dp"  
+		  android:background="@drawable/et_shape"  
+		  android:inputType="textPassword"  
+		  android:paddingLeft="20dp"  
+		  android:text="비밀번호"  
+		  android:textColor="@color/deepGray" />  
+		  
+	    <Button  
+		  android:id="@+id/button"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="wrap_content"  
+		  android:layout_marginTop="30dp"  
+		  android:background="@drawable/btn_shape"  
+		  android:text="로그인"  
+		  android:textColor="@color/white" />  
+	  
+	    <LinearLayout  
+		  android:layout_width="match_parent"  
+		  android:layout_height="match_parent"  
+		  android:orientation="horizontal"  
+		  android:layout_below="@+id/button_login"  
+		  android:layout_centerHorizontal="true"  
+		  android:layout_marginTop="20dp">  
+		  
+	  
+	        <TextView  
+			  android:id="@+id/textView5"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:layout_marginLeft="50dp"  
+			  android:text="아직 회원이 아니신가요?" />  
+		  
+	        <TextView  
+			  android:id="@+id/textView6"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:layout_marginLeft="50dp"  
+			  android:text="회원가입 하기" /> 
+	   </LinearLayout>  
+		  
+	</LinearLayout>
+
+[RelativeLayout]
+
+    <?xml version="1.0" encoding="utf-8"?>  
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+	  xmlns:app="http://schemas.android.com/apk/res-auto"  
+	  android:layout_width="match_parent" android:layout_height="match_parent">  
+	  
+	    <ImageView  
+		  android:id="@+id/imageView_logoImg"  
+		  android:layout_width="280dp"  
+		  android:layout_height="135dp"  
+		  android:layout_centerHorizontal="true"  
+		  android:layout_marginTop="80dp"  
+		  app:srcCompat="@mipmap/pic" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText_id"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="40dp"  
+		  android:layout_below="@+id/imageView_logoImg"  
+		  android:layout_marginHorizontal="24dp"  
+		  android:layout_marginTop="40dp"  
+		  android:ems="10"  
+		  android:textColor="@color/deepGray"  
+		  android:background="@drawable/et_shape"  
+		  android:paddingLeft="20dp"  
+		  android:inputType="textEmailAddress"  
+		  android:text="이메일" />  
+	  
+	    <EditText  
+		  android:id="@+id/editText_passwd"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="40dp"  
+		  android:layout_below="@+id/editText_id"  
+		  android:layout_marginHorizontal="24dp"  
+		  android:layout_marginTop="20dp"  
+		  android:background="@drawable/et_shape"  
+		  android:ems="10"  
+		  android:inputType="textPassword"  
+		  android:paddingLeft="20dp"  
+		  android:text="비밀번호"  
+		  android:textColor="@color/deepGray" />  
+	  
+	    <Button  
+		  android:id="@+id/button_loginBtn"  
+		  android:layout_width="match_parent"  
+		  android:layout_height="wrap_content"  
+		  android:layout_below="@+id/editText_passwd"  
+		  android:layout_marginHorizontal="24dp"  
+		  android:layout_marginTop="30dp"  
+		  android:background="@drawable/btn_shape"  
+		  android:text="로그인"  
+		  android:textColor="@color/white" />  
+		  
+	    <LinearLayout  
+		  android:layout_width="match_parent"  
+		  android:layout_height="match_parent"  
+		  android:orientation="horizontal"  
+		  android:layout_below="@+id/button_loginBtn"  
+		  android:layout_centerHorizontal="true"  
+		  android:layout_marginTop="20dp">  
+	  
+	        <TextView  
+			  android:id="@+id/textView7"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:layout_marginLeft="50dp"  
+			  android:text="아직 회원이 아니신가요?" />  
+			  
+	        <TextView  
+			  android:id="@+id/textView8"  
+			  android:layout_width="wrap_content"  
+			  android:layout_height="wrap_content"  
+			  android:layout_marginLeft="50dp"  
+			  android:text="회원가입 하기" />  
+	    </LinearLayout>  
+	  
+	</RelativeLayout>
+
+
 ## [ 성장 과제 2 ] 자동 로그인 구현하기
 > 회원가입시 LoginActivity로 돌아와 가입한 id, pw로 자동 로그인 하기, 로그인 하여 MainActivity로 간 경우 앱을 종료했다가 다시 켜면 LoginActivity에서 자동 로그인 하기
 
