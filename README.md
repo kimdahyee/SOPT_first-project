@@ -125,12 +125,12 @@ SOPT 1차 세미나 과제
 	  
 	        var pref : SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)  
 	        //"pref"이라는 파일 이름으로 SharedPreferences 객체 생성  
-		    //해당 앱만 읽기, 쓰기가 가능하도록 권한 설정  
-		    var editor : SharedPreferences.Editor = pref.edit()  
+		//해당 앱만 읽기, 쓰기가 가능하도록 권한 설정  
+		var editor : SharedPreferences.Editor = pref.edit()  
 	        //데이터를 저장하기 위한 Editor 객체 생성  
 	  
-		    button_login2.setOnClickListener {
-			    when {  
+		button_login2.setOnClickListener {
+		    when {  
 	                editText3.text.isNullOrBlank() -> Toast.makeText(this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()  
 	                editText4.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()  
 	                editText5.text.isNullOrBlank() -> Toast.makeText(this, "비밀번호 확인을 입력하세요.", Toast.LENGTH_SHORT).show()  
@@ -141,25 +141,25 @@ SOPT 1차 세미나 과제
 			    val intent = Intent(this, LoginActivity::class.java)  
 	  
 	                    //intent.putExtra("id", editText3.text.toString())  
-					    //intent.putExtra("pw", editText4.text.toString())  
-					    editor.putString("id", editText3.text.toString())   
+			    //intent.putExtra("pw", editText4.text.toString())  
+			    editor.putString("id", editText3.text.toString())   
 	                    editor.putString("pw", editText4.text.toString())  
 	                    //editor를 사용해서 파일에 key-value 형태로 id, pw 정보 저장  
-						//저장할 수 있는 데이터 타입 boolean, int, float, long, string  	
-						editor.commit()  
+			    //저장할 수 있는 데이터 타입 boolean, int, float, long, string  	
+			    editor.commit()  
 	                    //데이터 저장 및 삭제 시 commit 필수  
 	  
-					    startActivity(intent)  
+			    startActivity(intent)  
 	                    finish()  
 	                }  
 	            }  
 	        }  
-		}  
+	    }  
 	}
 	
 [LoginActivity.kt]
 
-    package ddwucom.mobile.sopt.sopt1.sopt_first_project  
+    	package ddwucom.mobile.sopt.sopt1.sopt_first_project  
   
 	import android.app.Activity  
 	import android.content.Context  
@@ -180,9 +180,9 @@ SOPT 1차 세미나 과제
 	  
 	        autoLogin()  
 	  
-	        button_login.setOnClickListener {  
-			    if (editText1.text.isNullOrBlank() || editText2.text.isNullOrBlank()) {  
-	                Toast.makeText(this, "아이디와 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show()  
+	        button_login.setOnClickListener {
+		    if (editText1.text.isNullOrBlank() || editText2.text.isNullOrBlank()) {  
+	                	Toast.makeText(this, "아이디와 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show()  
 	            } else {  
 	                val intent = Intent(this, MainActivity::class.java)  
 	                startActivity(intent)  
@@ -190,8 +190,8 @@ SOPT 1차 세미나 과제
 	            }  
 	        }  
 	  
-		    textView2.setOnClickListener { //회원가입하기 버튼 클릭  
-			    val intent = Intent(this, RegisterActivity::class.java)  
+		textView2.setOnClickListener { //회원가입하기 버튼 클릭  
+			val intent = Intent(this, RegisterActivity::class.java)  
 		        startActivityForResult(intent, REQ_CODE)  
 		    }  
 		}  
@@ -201,7 +201,8 @@ SOPT 1차 세미나 과제
 	  
 	        if (requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {  
 	            //editText1.setText(data!!.getStringExtra("id"))  
-			    //editText2.setText(data!!.getStringExtra("pw"))  finish()  
+		    //editText2.setText(data!!.getStringExtra("pw"))  
+		    finish()  
 	        }  
 	    }  
 	  
