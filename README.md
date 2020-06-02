@@ -353,6 +353,8 @@ SOPT 1차 세미나 과제
 
 **SharedPreferences란?** 어플 내에서 간단한 데이터를 저장하고 읽어올 수 있는 API, 파일 형태로 저장
 
+***사용 방법과 자세한 설명은 아래 코드의 주석 확인하기***
+
 [RegisterActivity.kt]
 
     
@@ -461,6 +463,7 @@ SOPT 1차 세미나 과제
 	  
 	        if (!(pref.getString("id", null).isNullOrBlank() || pref.getString("pw", null).isNullOrBlank())) {  
 	            val id = pref.getString("id", null).toString()  
+		    //값을 가져올 때 파라미터로 key와 default 값을 넣어준다
 	  
 	            if (!id.isNullOrBlank()) {  
 	                Toast.makeText(this, "${id}님이 자동로그인 되었습니다.", Toast.LENGTH_SHORT).show();  
